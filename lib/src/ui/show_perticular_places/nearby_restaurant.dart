@@ -27,7 +27,7 @@ class _FoodieMapState extends State<FoodieMap> {
     PlacesSearchResponse _response = await places.searchNearbyWithRadius(
         Location(lat: _userLocation.latitude, lng: _userLocation.longitude),
         10000,
-        type: "hospital");
+        type: "restaurant");
 
     Set<Marker> _restaurantMarkers = _response.results
         .map((result) => Marker(
@@ -77,7 +77,7 @@ class _FoodieMapState extends State<FoodieMap> {
                       position: _userLocation)),
               );
             } else {
-              return Center(child: Text("Failed to get user location."));
+              return Center(child: Scaffold(body: Center(child: Text("Failed to get user location."))));
             }
           }
           // While the connection is not in the done state yet
